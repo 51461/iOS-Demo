@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,16 +56,6 @@
                                     <action selector="setStartTime:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4e9-ZC-m5s"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="top" semanticContentAttribute="spatial" contentHorizontalAlignment="trailing" contentVerticalAlignment="fill" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Voi-4z-hEt">
-                                <rect key="frame" x="0.0" y="650" width="414" height="216"/>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="568033200">
-                                    <!--2019-01-01 11:00:00 +0000-->
-                                </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="599482800">
-                                    <!--2019-12-31 11:00:00 +0000-->
-                                </date>
-                                <locale key="locale" localeIdentifier="zh_CN"/>
-                            </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojC-aW-4S5">
                                 <rect key="frame" x="135" y="178" width="123" height="36"/>
                                 <constraints>
@@ -109,9 +99,9 @@
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2ZX-jF-8L7">
-                                <rect key="frame" x="0.0" y="281" width="414" height="347"/>
+                                <rect key="frame" x="0.0" y="281" width="414" height="581"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="347" id="NAS-4x-Rys"/>
+                                    <constraint firstAttribute="height" constant="581" id="NAS-4x-Rys"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellIdentifier" id="pk4-53-Nh6">
@@ -149,7 +139,6 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Voi-4z-hEt" firstAttribute="top" secondItem="2ZX-jF-8L7" secondAttribute="bottom" constant="22" id="1xG-ru-URJ"/>
                             <constraint firstItem="rWA-LG-Yan" firstAttribute="centerY" secondItem="8nc-Gu-Wqy" secondAttribute="centerY" id="2Bj-i7-QDJ"/>
                             <constraint firstItem="ojC-aW-4S5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="135" id="2cd-a2-xXZ"/>
                             <constraint firstItem="rWA-LG-Yan" firstAttribute="leading" secondItem="51r-Mv-ibS" secondAttribute="leading" id="4xD-fG-6sp"/>
@@ -169,8 +158,6 @@
                             <constraint firstItem="51r-Mv-ibS" firstAttribute="leading" secondItem="ojC-aW-4S5" secondAttribute="trailing" constant="82" id="R2V-HA-dtP"/>
                             <constraint firstItem="VWT-Rf-oBj" firstAttribute="bottom" secondItem="5f3-0h-3qU" secondAttribute="bottom" id="XTp-KH-4qg"/>
                             <constraint firstItem="VWT-Rf-oBj" firstAttribute="top" secondItem="12Z-E4-si1" secondAttribute="bottom" constant="14" id="Yxe-2J-f4G"/>
-                            <constraint firstItem="2ZX-jF-8L7" firstAttribute="leading" secondItem="Voi-4z-hEt" secondAttribute="leading" id="ZU2-5D-o2F"/>
-                            <constraint firstItem="2ZX-jF-8L7" firstAttribute="trailing" secondItem="Voi-4z-hEt" secondAttribute="trailing" id="d6s-YZ-83f"/>
                             <constraint firstItem="ojC-aW-4S5" firstAttribute="top" secondItem="HDV-XI-474" secondAttribute="bottom" constant="14" id="dKV-m1-iQW"/>
                             <constraint firstItem="VWT-Rf-oBj" firstAttribute="top" secondItem="5f3-0h-3qU" secondAttribute="top" id="hDG-Ok-0yE"/>
                             <constraint firstItem="ojC-aW-4S5" firstAttribute="centerY" secondItem="12Z-E4-si1" secondAttribute="centerY" id="i0a-0J-lAj"/>
@@ -186,7 +173,6 @@
                     </view>
                     <connections>
                         <outlet property="buttons" destination="2ZX-jF-8L7" id="MuJ-64-78A"/>
-                        <outlet property="datePicker" destination="Voi-4z-hEt" id="dgW-VX-44l"/>
                         <outlet property="label" destination="ojC-aW-4S5" id="qL4-Zp-JOT"/>
                         <outlet property="labels" destination="8nc-Gu-Wqy" id="C5Y-xG-JFH"/>
                         <outlet property="tableView" destination="2ZX-jF-8L7" id="J86-0o-zds"/>
