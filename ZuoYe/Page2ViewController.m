@@ -55,10 +55,9 @@ static NSString *img;
 //     Pass the selected object to the new view controller.
 }
 
-
-
 - (IBAction)exitPage:(id)sender {
     NSLog(@"返回主视图");
     [self dismissViewControllerAnimated:YES completion:^{}];
+    
 }
 @end
