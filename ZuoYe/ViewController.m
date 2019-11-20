@@ -179,8 +179,14 @@
     if ([showList count]==0) {
         self.tableView.separatorStyle = UITableViewCellAccessoryNone;
 //        self.buttons.hidden = TRUE ;
-        NSDictionary *add = [NSDictionary dictionaryWithObjectsAndKeys:@"查无数据",@"name", nil];
-        [showList addObject:add];
+        UIAlertController* alertController  = [UIAlertController alertControllerWithTitle:@"警⚠️告" message: @"查无数据" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"Tap Yes Button");
+        }];
+        [alertController addAction:yesAction];
+        [self presentViewController:alertController animated:TRUE completion:nil];
+//        NSDictionary *add = [NSDictionary dictionaryWithObjectsAndKeys:@"查无数据",@"name", nil];
+//        [showList addObject:add];
     }
     self.listTeams=[[NSArray alloc] initWithArray:showList];
     NSUInteger con = [showList count];
@@ -300,6 +306,20 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyy-MM-dd";
         NSString *dateString = [formatter stringFromDate:selectedDate];
+        NSString *dateStr = [dateString stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        if (self.label.text) {
+            NSString *Start = [self.labels.text stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            if ([dateStr intValue]-[Start intValue]>0) {
+                self.labels.text = dateString;
+            }else{
+                UIAlertController* alertController  = [UIAlertController alertControllerWithTitle:@"警告" message: @"开始时间不能晚于结束时间" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    NSLog(@"Tap Yes Button");
+                }];
+                [alertController addAction:yesAction];
+                [self presentViewController:alertController animated:TRUE completion:nil];
+            }
+        }
         self.labels.text = dateString;
     }else{
         NSLog(@"结束时间。。。。。。。。。。");
@@ -307,6 +327,20 @@
         NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
         formatter2.dateFormat = @"yyyy-MM-dd";
         NSString *dateString  = [formatter2 stringFromDate:selectedDate2];
+        NSString *dateStr = [dateString stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        if (self.labels.text) {
+            NSString *Start = [self.labels.text stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            if ([dateStr intValue]-[Start intValue]>0) {
+                self.label.text = dateString;
+            }else{
+                UIAlertController* alertController  = [UIAlertController alertControllerWithTitle:@"警告" message: @"结束时间不能早于开始时间" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    NSLog(@"Tap Yes Button");
+                }];
+                [alertController addAction:yesAction];
+                [self presentViewController:alertController animated:TRUE completion:nil];
+            }
+        }
         self.label.text = dateString;
     }
     self.alphaBackgroundView.hidden = YES;
