@@ -14,7 +14,6 @@
 
 @interface ViewController ()
 #pragma mark --test
-
 @property (nonatomic, weak) UIView *alphaBackgroundView;
 
 @property (nonatomic, weak) SLGeneralDatePickerView *pickerView;
@@ -61,6 +60,7 @@
     NSLog(@"123UITableViewDataSource 协议方法");
     return [self.listTeams count];
 }
+#pragma mark --加载数据
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
@@ -104,7 +104,7 @@
 - (IBAction)exitNumber:(id)sender {
     [sender resignFirstResponder];
 }
-
+#pragma mark --查找数据
 - (IBAction)startFind:(id)sender {
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *path = [bundle pathForResource:@"team" ofType:@"plist"];
@@ -189,7 +189,7 @@
 //    self.listTeams = [[NSArray alloc] initWithContentsOfFile:@"show.plist"];
     [self.tableView reloadData];
 }
-#pragma mark 传值
+#pragma mark --传值
 - (IBAction)chuanZhi:(id)sender {
     UITableViewCell *UTCell = (UITableViewCell *)[[sender superview] superview];
     NSString *name=  UTCell.textLabel.text;
@@ -229,7 +229,7 @@
     
 }
 
-
+#pragma mark --选择时间
 - (IBAction)setStartTime:(id)sender {
 //    NSLog(@"选择开始时间");
 //    NSDate *selectedDate = self.datePicker.date;
@@ -258,6 +258,7 @@
     //如果只需要默认值，则屏蔽这行代码
     [self.pickerView setupPickerViewDataWithDefaultSelectedDate:[NSDate date] dateFormatter:@"yyyy-MM-dd" datePickerMode:SLDatePickerModeDate];
 }
+#pragma mark --弹出时间选择器
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     [self.pickerView2 mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -342,10 +343,8 @@
         view.backgroundColor = [UIColor whiteColor];
         view.hidden = YES;
         [self.alphaBackgroundView addSubview:view];
-        
         _pickerView = view;
     }
-    
     return _pickerView;
 }
 
@@ -383,6 +382,7 @@
     }
     return _doneButton;
 }
+
 - (UIButton *)cancelButton {
     if (!_cancelButton) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
