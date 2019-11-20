@@ -14,7 +14,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
+- (IBAction)idUpdate:(id)sender;
+- (IBAction)nameUpdate:(id)sender;
+- (IBAction)dateUpdate:(id)sender;
+- (IBAction)saveUpdate:(id)sender;
 - (IBAction)exitPage:(id)sender;
 -(void) personFindHouse:(NSArray *)array;
 @end
@@ -53,6 +56,50 @@ static NSString *img;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //     Get the new view controller using [segue destinationViewController].
 //     Pass the selected object to the new view controller.
+}
+-(void)alertText:(NSString *)text :(int) ids{
+     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Update" message:text preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = text;
+    }];
+     UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+         //响应事件
+         NSString *update=nil;
+         //得到文本信息
+         for(UITextField *text in alert.textFields){
+             NSLog(@"text = %@", text.text);
+             update=text.text;
+         }
+         if (ids==0) {
+             self.ids.text=update;
+         }else if(ids==1){
+             self.name.text=update;
+         }else{
+             self.time.text=update;
+         }
+     }];
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+            //响应事件
+        NSLog(@"action = %@", alert.textFields);
+    }];
+    [alert addAction:okAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+- (IBAction)idUpdate:(id)sender {
+    [self alertText:@"修改ID" :0];
+}
+
+- (IBAction)nameUpdate:(id)sender {
+    [self alertText:@"修改姓名" :1];
+}
+
+- (IBAction)dateUpdate:(id)sender {
+    [self alertText:@"修改时间" :2];
+}
+
+- (IBAction)saveUpdate:(id)sender {
+    
 }
 
 - (IBAction)exitPage:(id)sender {
