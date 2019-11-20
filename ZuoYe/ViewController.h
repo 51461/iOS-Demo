@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+#import "Person.h"
+@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 
 @end
